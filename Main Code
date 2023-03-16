@@ -1,0 +1,18 @@
+<?php
+// specify the URL of the RSS feed to read
+$rss_url = "http://example.com/feed";
+
+// use SimpleXML to load the RSS feed
+$rss = simplexml_load_file($rss_url);
+
+// output the title and description of the RSS feed
+echo "<h1>" . $rss->channel->title . "</h1>";
+echo "<p>" . $rss->channel->description . "</p>";
+
+// loop through the items in the RSS feed and output their title, description, and link
+foreach ($rss->channel->item as $item) {
+    echo "<h2>" . $item->title . "</h2>";
+    echo "<p>" . $item->description . "</p>";
+    echo "<a href='" . $item->link . "'>Read more</a>";
+}
+?>
